@@ -6,7 +6,7 @@ import boto3
 app = Flask(__name__)
 
 dynamodb_table_name = 'mutant-api'
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', location='us-west-1')
 dynamo_table = dynamodb.Table(dynamodb_table_name)
 
 

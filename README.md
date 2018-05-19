@@ -30,6 +30,10 @@ The method [`isMutant()`](mutant.py#L50) returns `True` when it identifies Mutan
 
 The API is deployed using a *serverless* approach, using AWS Lambda and API Gateway. This approach is really cost effective, because we only pay for the effective use of the API with worrying for any server at all. Also, the first million of API calls are free!
 
+PLease check the [`.travis.yml`](.travis.yml) for tests and code coverage.
+
+
 Feel free to contact me if you need additional information.
 
-![](https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5f/Magneto-XMVSF-Stance.gif/revision/latest?cb=20170720083633)
+
+![Magneto](https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5f/Magneto-XMVSF-Stance.gif/revision/latest?cb=20170720083633)

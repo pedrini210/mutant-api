@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pedrini210/mutant-api.svg?branch=master)](https://travis-ci.org/pedrini210/mutant-api)
+
 # Mutant API
 
 Magneto as entitled us the mission to study human DNA samples in order to determine if the subject is a Mutant or not.

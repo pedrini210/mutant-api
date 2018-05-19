@@ -13,7 +13,7 @@ class FlaskApiTests(unittest.TestCase):
         self.human_dna = {'dna': ["ATGCGA", "CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]}
         self.mutant_dna = {'dna': ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"]}
         self.bad_dna = {'dna': ["CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]}
-        dynamo = boto3.resource('dynamodb')
+        dynamo = boto3.resource('dynamodb', location='eu-west-1')
         dynamo.create_table(
             TableName=app.dynamodb_table_name,
             KeySchema=[

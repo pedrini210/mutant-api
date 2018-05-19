@@ -2,8 +2,9 @@
 [![codecov](https://codecov.io/gh/pedrini210/mutant-api/branch/master/graph/badge.svg)](https://codecov.io/gh/pedrini210/mutant-api)
 
 
+<img src="https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5a/Magneto-XMVSF-Icon.png/revision/latest?cb=20170720074811"/>
 
-# Mutant API
+# Mutant API 
 
 Magneto as entitled us the mission to study human DNA samples in order to determine if the subject is a Mutant or not.
 
@@ -22,4 +23,13 @@ I've used my programming knowledge, the **Python** programming language and the 
 
 Zappa is a handy tool to deploy Python (Flask & Django) apps in a serverless fashion. It's easy to configure and lets you deploy a API Gateway and Lambda functions in minutes. You can check Zappa project [here](https://github.com/Miserlou/Zappa).
 
+## Additional Information
+The file [`mutant.py`](mutant.py) have the algorithm provided by Margeto to identify mutant DNA.
 
+The method [`isMutant()`](mutant.py#L50) returns `True` when it identifies Mutant DNA, `False` when it encounters Human DNA and raises an exception when the DNA does not belongs to the Homo Sapiens species.
+
+The API is deployed using a *serverless* approach, using AWS Lambda and API Gateway. This approach is really cost effective, because we only pay for the effective use of the API with worrying for any server at all. Also, the first million of API calls are free!
+
+Feel free to contact me if you need additional information.
+
+![](https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5f/Magneto-XMVSF-Stance.gif/revision/latest?cb=20170720083633)

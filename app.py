@@ -14,7 +14,7 @@ dynamo_table = dynamodb.Table(dynamodb_table_name)
 def index():
     return "Health check!\n"
 
-
+#Challenge Level 2
 @app.route('/mutant/', methods=['POST'])
 def validate_mutant():
     if not request.json or 'dna' not in request.json: return abort(403)
@@ -31,7 +31,7 @@ def validate_mutant():
     except ValueError:  # Not even Homo Sapiens DNA
         return abort(403)
 
-
+# Challenge Level 3
 @app.route('/stats', methods=['GET'])
 def mutant_stats():
     mutant_stats_dict = {

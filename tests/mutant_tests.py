@@ -16,17 +16,10 @@ class MutantTestCase(unittest.TestCase):
         self.bad_dna_2 = ["ATGCG", "CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]
         self.bad_dna_3 = ["ATGCGX", "CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]
         self.human_dna = ["ATGCGA", "CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]
+        self.small_human_dna = ["AAA", "AAA", "AAA"]
         self.mutant_dna_1 = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"]   # 3 mutant genes
         self.mutant_dna_2 = ["AAAAAG", "CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]  # 2 mutant genes
         self.mutant_dna_3 = ["AAAAAA", "CCGTGC", "TTATCT", "AGAACG", "CGCCTA", "TCACTG"]  # 3 mutant genes
-
-    def test_valid_dna_strain_length(self):
-        self.assertFalse(mutant.valid_dna_strain_length(self.bad_strain_1))
-        self.assertTrue(mutant.valid_dna_strain_length(self.bad_strain_2))
-        self.assertTrue(mutant.valid_dna_strain_length(self.human_strain))
-        self.assertTrue(mutant.valid_dna_strain_length(self.mutant_strain_1))
-        self.assertTrue(mutant.valid_dna_strain_length(self.mutant_strain_2))
-        self.assertTrue(mutant.valid_dna_strain_length(self.mutant_strain_3))
 
     def test_valid_nitrogenous_bases(self):
         self.assertFalse(mutant.valid_nitrogenous_bases(self.bad_strain_2))
@@ -36,31 +29,28 @@ class MutantTestCase(unittest.TestCase):
         self.assertTrue(mutant.valid_nitrogenous_bases(self.mutant_strain_2))
         self.assertTrue(mutant.valid_nitrogenous_bases(self.mutant_strain_3))
 
-    def test_valid_dna_length(self):
-        self.assertFalse(mutant.valid_dna_length(self.bad_dna_1))
-        self.assertTrue(mutant.valid_dna_length(self.bad_dna_2))
-        self.assertTrue(mutant.valid_dna_length(self.bad_dna_3))
-        self.assertTrue(mutant.valid_dna_length(self.human_dna))
-        self.assertTrue(mutant.valid_dna_length(self.mutant_dna_1))
-        self.assertTrue(mutant.valid_dna_length(self.mutant_dna_2))
-        self.assertTrue(mutant.valid_dna_length(self.mutant_dna_3))
-
-    def test_validate_dna(self):
-        self.assertFalse(mutant.validate_dna(self.bad_dna_1))
-        self.assertFalse(mutant.validate_dna(self.bad_dna_2))
-        self.assertFalse(mutant.validate_dna(self.bad_dna_3))
-        self.assertTrue(mutant.validate_dna(self.human_dna))
-        self.assertTrue(mutant.validate_dna(self.mutant_dna_1))
-        self.assertTrue(mutant.validate_dna(self.mutant_dna_2))
-        self.assertTrue(mutant.validate_dna(self.mutant_dna_3))
-
     def test_dna_strains_string_to_array(self):
         dna_control = [list("ATGCGA"), list("CCGTGC"), list("TTATCT"), list("AGAACG"), list("CGCCTA"), list("TCACTG")]
         dna_in_study = mutant.dna_strains_string_to_array(self.human_dna)
         self.assertEqual(dna_control, dna_in_study)
 
+    def test_validate_homo_sapiens_dna(self):
+        self.assertFalse(mutant.validate_homo_sapiens_dna(self.bad_dna_1))
+        self.assertFalse(mutant.validate_homo_sapiens_dna(self.bad_dna_2))
+        self.assertFalse(mutant.validate_homo_sapiens_dna(self.bad_dna_3))
+        self.assertTrue(mutant.validate_homo_sapiens_dna(self.human_dna))
+        self.assertTrue(mutant.validate_homo_sapiens_dna(self.mutant_dna_1))
+        self.assertTrue(mutant.validate_homo_sapiens_dna(self.mutant_dna_2))
+        self.assertTrue(mutant.validate_homo_sapiens_dna(self.mutant_dna_3))
+
+    def test_impossible_to_be_mutant(self):
+        self.assertTrue(mutant.impossible_to_be_mutant(np.matrix(mutant.dna_strains_string_to_array(self.small_human_dna))))
+        self.assertFalse(mutant.impossible_to_be_mutant(np.matrix(mutant.dna_strains_string_to_array(self.human_dna))))
+        self.assertFalse(mutant.impossible_to_be_mutant(np.matrix(mutant.dna_strains_string_to_array(self.mutant_dna_1))))
+
     def test_mutant_genome_hits(self):
         self.assertEqual(mutant.mutant_genome_hits(list(self.human_strain)), 0)
+        self.assertEqual(mutant.mutant_genome_hits(list(self.small_human_dna[0])), 0)
         self.assertEqual(mutant.mutant_genome_hits(list(self.mutant_strain_1)), 1)
         self.assertEqual(mutant.mutant_genome_hits(list(self.mutant_strain_2)), 2)
         self.assertEqual(mutant.mutant_genome_hits(list(self.mutant_strain_3)), 3)
@@ -82,6 +72,7 @@ class MutantTestCase(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "This is not Homo Sapiens DNA"): mutant.isMutant(self.bad_dna_2)
         with self.assertRaisesRegex(ValueError, "This is not Homo Sapiens DNA"): mutant.isMutant(self.bad_dna_3)
         self.assertFalse(mutant.isMutant(self.human_dna))
+        self.assertFalse(mutant.isMutant(self.small_human_dna))
         self.assertTrue(mutant.isMutant(self.mutant_dna_1))
         self.assertTrue(mutant.isMutant(self.mutant_dna_2))
         self.assertTrue(mutant.isMutant(self.mutant_dna_3))

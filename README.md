@@ -1,11 +1,19 @@
 [![Build Status](https://travis-ci.org/pedrini210/mutant-api.svg?branch=master)](https://travis-ci.org/pedrini210/mutant-api) 
 [![codecov](https://codecov.io/gh/pedrini210/mutant-api/branch/master/graph/badge.svg)](https://codecov.io/gh/pedrini210/mutant-api)
 
+<div>
+<img src="https://pre00.deviantart.net/81bc/th/pre/i/2012/148/e/9/magneto_by_geos9104-d51adld.png" width=200>
+<h1>Mutant API </h1>
+</div>
 
-<img src="https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5a/Magneto-XMVSF-Icon.png/revision/latest?cb=20170720074811"/>
 
-# Mutant API 
+<p><i>Chromium machines to kill a master of magnetism? No wonder we call ourselves homo superior.</i></p>
+<p align="right"><i>- Magneto (Ultimate 
+Magneto)</i></p></p>
 
+<br>
+
+## Overview
 Magneto has entitled us the mission to study human DNA samples in order to determine if the subject is a Mutant or not.
 
 Based on a clever algorithm and **AWS**, we are going to create a web API to quickly analyze the DNA samples and identify the mutants.
@@ -18,7 +26,7 @@ I've used my programming knowledge, the **Python** programming language and the 
   3. Create and activate a Python virtual environment (`venv`).
   4. Install the requirements: `pip install -r requirements.txt`
   5. Create a DynamoDB Table, name it `mutant-api` and set `dna` as a string primary key. (Forgive the hardcoding here :smiley: )
-  6. In the project folder run: `zappa init` to configure the environment and AWS Lambda and API Gateway deployment.
+  6. In the project folder run: `zappa init` to configure the environment (my environment configuration is [here](zappa_settings.json)) and AWS Lambda and API Gateway deployment.
   7. Finally, run `zappa deploy <your_environment>` and you are ready to find mutants!
 
 Zappa is a handy tool to deploy Python (Flask & Django) apps in a serverless fashion. It's easy to configure and lets you deploy a API Gateway and Lambda functions in minutes. You can check Zappa project [here](https://github.com/Miserlou/Zappa).
@@ -35,5 +43,6 @@ Please check the [`.travis.yml`](.travis.yml) for tests and code coverage.
 
 Feel free to contact me if you need additional information.
 
-
-![Magneto](https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5f/Magneto-XMVSF-Stance.gif/revision/latest?cb=20170720083633)
+<div align="center">
+<img src="https://vignette.wikia.nocookie.net/street-fighter-sprites/images/5/5f/Magneto-XMVSF-Stance.gif/revision/latest?cb=20170720083633">
+</div>

@@ -6,7 +6,7 @@
 
 # Mutant API 
 
-Magneto as entitled us the mission to study human DNA samples in order to determine if the subject is a Mutant or not.
+Magneto has entitled us the mission to study human DNA samples in order to determine if the subject is a Mutant or not.
 
 Based on a clever algorithm and **AWS**, we are going to create a web API to quickly analyze the DNA samples and identify the mutants.
 

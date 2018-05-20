@@ -28,9 +28,9 @@ The file [`mutant.py`](mutant.py) have the algorithm provided by Margeto to iden
 
 The method [`isMutant()`](mutant.py#L50) returns `True` when it identifies Mutant DNA, `False` when it encounters Human DNA and raises an exception when the DNA does not belongs to the Homo Sapiens species.
 
-The API is deployed using a *serverless* approach, using AWS Lambda and API Gateway. This approach is really cost effective, because we only pay for the effective use of the API with worrying for any server at all. Also, the first million of API calls are free!
+The API is deployed using a *serverless* approach, using AWS Lambda and API Gateway. This approach is really cost effective, because we only pay for the effective use of the API without worrying for any servers at all. Also, the first million of API calls are free!
 
-PLease check the [`.travis.yml`](.travis.yml) for tests and code coverage.
+Please check the [`.travis.yml`](.travis.yml) for tests and code coverage.
 
 
 Feel free to contact me if you need additional information.

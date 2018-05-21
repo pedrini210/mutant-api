@@ -44,7 +44,7 @@ def dna_cols_to_list(dna_matrix: np.matrix) -> List[List[str]]:
 
 
 def dna_diagonals_to_list(dna_matrix: np.matrix) -> List[List[str]]:
-    diagonal_idx = int(MUTANT_GENE_LENGTH / 2)
+    diagonal_idx = int(dna_matrix.shape[0] - MUTANT_GENE_LENGTH)
     return [np.array(dna_matrix.diagonal(idx)).ravel().tolist() for idx in range((-1) * diagonal_idx, diagonal_idx + 1)]
 
 

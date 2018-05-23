@@ -17,8 +17,9 @@ def index():
 def validate_mutant():
     dynamodb = boto3.resource('dynamodb')
     dynamo_table = dynamodb.Table(dynamodb_table_name)
-    if not request.json or 'dna' not in request.json: return abort(403)
-    dna = request.json['dna']
+    req_json = request.get_json(force=True)
+    if not req_json or 'dna' not in req_json: return abort(403)
+    dna = req_json['dna']
     try:
         if mutant.isMutant(dna):
             # DB Mutant Insert
